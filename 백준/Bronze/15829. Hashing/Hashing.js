@@ -3,10 +3,12 @@ const input = require('fs').readFileSync('/dev/stdin').toString().trim().split('
 const L = Number(input[0]);
 const str = input[1];
 
-let sum = 0;
+let sum = 0n;
+let r = 31n;
+let M = 1234567891n;
 
 for(let i = 0; i < L; i++) {
-  sum += (str[i].charCodeAt() - 96) * (31 ** i);
+  sum += (BigInt(str[i].charCodeAt() - 96) * BigInt(r ** BigInt(i)));
 }
 
-console.log(sum % 1234567891);
+console.log(Number(sum % M));
